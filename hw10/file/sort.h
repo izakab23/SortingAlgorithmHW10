@@ -10,5 +10,6 @@
 #define SORT_H
 
 bool sortIntegerArray(int array[], int size, double& timing);
+void quicksort(int a[], int first, int last);
 
 #endif

@@ -13,12 +13,31 @@ using namespace std;
 
 struct timeval before, after;
 
+void quicksort(int a[], int first, int last)
+{
+    if (last <= first) return;
+    int pivot = a[first];
+    int i = first + 1, j = last;
+    while (i < j)
+    {
+        while (a[i] < pivot && i < j) i++;
+        while (a[j] > pivot) j--;
+        if (i < j)
+            swap(a[i++], a[j--]);
+    }
+    if (a[j] > pivot) j--;
+    swap(a[j], a[first]);
+    quicksort(a, first, j - 1);
+    quicksort(a, j + 1, last);
+} // quicksort()
+
 bool sortIntegerArray(int array[], int size, double& timing)
 {
     gettimeofday(&before, 0);
 
     /************** sorting algorithm **************/
 
+    quicksort(array, 0, size-1);
 
 
     /***********************************************/
