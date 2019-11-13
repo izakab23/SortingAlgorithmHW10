@@ -2,13 +2,14 @@
   Authors:       Izak Bounds, IUSB, student
   Class:         C243 Data Structures
   File name:     main.cc
-  Last updated:  November 7, 2019.
+  Last updated:  November 12, 2019.
   Description:   Main function + user interface
 ******************************************************************************/
 
 #include <iostream>
 using namespace std;
 #include <cstdlib>
+#include <iomanip>
 
 #include "sort.h"
 
@@ -22,9 +23,8 @@ void outputTiming(double timing, int size);
 int main()
 {
     int arraySize;
-    inputSize(arraySize);
-    const int SIZE = arraySize;
-    int *numbers = new int[arraySize];
+    inputSize(arraySize);  
+    int *numbers = new int[arraySize];  //creates an array of integers with arraySize elements
     double timing;
     inputNumbers(numbers, arraySize);
     if (sortIntegerArray(numbers, arraySize, timing))
@@ -33,7 +33,7 @@ int main()
         outputTiming(timing, arraySize);
     }
     else
-        cout << "fail to sort" << endl;
+        cout << "failed to sort" << endl;
     return 0;
 }
 
@@ -65,7 +65,9 @@ void outputNumbers(int numbers[], int size)
     cout << "after sorting: " << endl;
     for (int i = 0; i < size; ++i)
     {
-        cout << numbers[i] << " ";
+        cout << setw(8) << numbers[i];  //clean format
+        if ( (i+1)% 10 == 0)        // puts 10 integers per line
+            cout << endl;
     }
     cout << endl;
 }
@@ -76,5 +78,5 @@ outputs the time taken for the sorting algorithm to finish
 void outputTiming(double timing, int size)
 {
     cout << "Sorting of " << size <<
-        " integers took " << timing << " ms" << endl;
+        " integers took " << timing << " seconds" << endl;
 }

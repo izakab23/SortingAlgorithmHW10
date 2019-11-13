@@ -1,8 +1,9 @@
 /*****************************************************************************
   Authors:       Izak Bounds, IUSB, student
+                 Hoang Quang, IUSB, student
   Class:         C243 Data Structures
   File name:     sort.cc
-  Last updated:  November 7, 2019.
+  Last updated:  November 12, 2019.
   Description:   Sorting function for integer array.
 ******************************************************************************/
 
@@ -16,8 +17,8 @@ struct timeval before, after;
 void quicksort(int a[], int first, int last)
 {
     if (last <= first) return;
-    int pivot = a[first];
-    int i = first + 1, j = last;
+    int pivot = a[first];       //sets pivot
+    int i = first + 1, j = last;    //sets elements to be checked
     while (i < j)
     {
         while (a[i] < pivot && i < j) i++;
